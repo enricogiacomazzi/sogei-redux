@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "label": "fare la spesa",
+      "completed": true,
+      "id": 1
+    },
+    {
+      "label": "comprare latte",
+      "completed": true,
+      "id": 2
+    },
+    {
+      "label": "comprare bagnoschiuma",
+      "completed": true,
+      "id": 6
+    },
+    {
+      "label": "andare da luca",
+      "completed": true,
+      "id": 12
+    }
+  ]
+}

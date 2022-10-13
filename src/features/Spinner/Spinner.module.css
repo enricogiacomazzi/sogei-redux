@@ -1,0 +1,25 @@
+
+
+
+.container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #444;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container > div {
+    font-size: 400px;
+    color: greenyellow;
+}
+
+/* .spinner {
+    font-size: 400px;
+    color: purple;
+} */
