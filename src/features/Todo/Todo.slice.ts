@@ -8,21 +8,13 @@ import { TodoModel } from "./models/todo.model";
 interface TodoState {
     items: Array<TodoModel>,
     errorMessage?: string;
+    showModal: boolean;
 }
 
 const INITIALSTATE: TodoState = {
-    items: [
-        // {id: 2, label: 'fare la spesa', completed: false},
-        // {id: 3, label: 'palestra', completed: true},
-        // {id: 6, label: 'comprare mangiare gatti', completed: false},
-        // {id: 8, label: 'giocare con l\'xbox', completed: true},
-    ]
+    items: [],
+    showModal: false
 }
-
-// ({items: [...state.items, {label, completed: false, id: Math.round(Math.random() * 100000)}]}),
-// ({items: state.items.map(t => t.id === id ? {...t, completed: true} : t)})
-//  ({items: state.items.map(t => t.id === id ? {...t, completed: false} : t)})
-// ({items: state.items.filter(t => t.id !== id)})
 
 export const loadTodoAsync = createAsyncThunk('todo-list/loadTodo', async (_, thunkApi) => {
     thunkApi.dispatch(show());
@@ -65,6 +57,12 @@ const todoSlice = createSlice({
         deleteTodoError: (state, {payload}: PayloadAction<string>) => {
             state.errorMessage = payload;
         },
+        // showAddModal: (state) => {
+        //     state.showModal = true;
+        // },
+        // hideAddModal: (state) => {
+        //     state.showModal = false;
+        // },
     },
     extraReducers: builder => {
         builder.addCase(loadTodoAsync.pending, state => {
@@ -122,6 +120,13 @@ export const deleteTodo = (todoId: number): AppThunk => async (dispatch) => {
         dispatch(todoSlice.actions.deleteTodoSuccess(todoId));
     } catch(e) {
         dispatch(todoSlice.actions.deleteTodoError((e as Error).message));
+    }
+}
+ // hideAddModal
+export const showAddModal = (): AppThunk => async (dispatch) => {
+    const label = prompt("Add todo");
+    if(label !== null) {
+        dispatch(addTodo({label, completed: false}));
     }
 }
 

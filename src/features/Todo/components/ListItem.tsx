@@ -33,8 +33,8 @@ export const ListItem:React.FC<ListItemProps> = ({item, toggleComplete, deleteTo
     return (
         <li>
             <span className={spanStyle}>{item?.label}</span>
-            <button onClick={toggleComplete}><i className={competedIconCls}/></button>
-            <button onClick={deleteTodo}><i className="fa fa-trash"/></button>
+            <button aria-label="toggle completed" onClick={toggleComplete}><i className={competedIconCls}/></button>
+            <button aria-label="delete" onClick={deleteTodo}><i className="fa fa-trash"/></button>
         </li>
     )
 }
